@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcoes</title>
+</head>
+<body>
+     <h1>Oo</h1>
+    <script>
+
+          // declaração
+        function ola(){
+            document.write("olá mundo!");
+        }
+
+        ola();
+
+          //expressão
+        const ola2 = function(){
+          console.log("ola mundo de function expression");
+        }
+
+        ola2();
+
+          //arrow function
+        const ola3 = () =>{
+            console.log("ola mundo de arrow function");
+        }
+        ola3();
+
+          //retorno de valores
+        function obtemDiaSemana(){
+          return new Date().getDay()
+        }
+
+        console.log(obtemDiaSemana())
+
+
+    </script>
+    
+</body>
+</html>
