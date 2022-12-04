@@ -12,7 +12,7 @@
 
           // declaração
         function ola(){
-            document.write("olá mundo!");
+            console.log("olá mundo!");
         }
 
         ola();
@@ -36,6 +36,17 @@
         }
 
         console.log(obtemDiaSemana())
+
+        function somar(n1 = 0, n2 = 0){
+          //let _n1 = n1 || 0
+          //let _n2 = n2 || 0
+          return n1 + n2
+        }
+
+        let soma = somar(3, 5);
+        console.log(soma);
+        console.log(somar(10, 4));
+        alert(somar());
 
 
     </script>
