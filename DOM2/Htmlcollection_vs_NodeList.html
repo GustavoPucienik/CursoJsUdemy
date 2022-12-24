@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>htmlcollectionVSnodelist</title>
+</head>
+<body>
+    <div class='countainer'>
+        <ul id='list'>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+            <li>item 5</li>
+        </ul>
+    </div>
+    <script>
+        const nodelist = document.querySelectorAll(`#list li`)//retorna uma node list
+        const collection = document.getElementById(`list`).getElementsByTagName(`li`)
+        console.log(nodelist) //nodelist é estatico
+        console.log(collection) // htmlcollection se atualiza com o dom sofrendo alteração
+
+        document.querySelector(`#list`).innerHTML += `<li>item 6</li>`
+
+        console.log(nodelist)
+        console.log(collection)
+
+        document.getElementById(`list`).innerHTML += `<li>item 7</li>`
+
+        console.log(nodelist)
+        console.log(collection)
+    </script>
+</body>
+</html>

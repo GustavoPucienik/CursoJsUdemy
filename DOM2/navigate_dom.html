@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigate dom</title>
+</head>
+<body>
+    
+<h1>Teste dom</h1>
+
+<div class="countainer">
+    <p>paragrafo</p>
+    <p>paragrafo com <a href="#">link</a></p>
+    <p>paragrafo 2</p>
+
+    <h2>Lista</h2>
+        <ul>
+            <li>element li 1</li>
+            <li>element li 2
+                <ul>
+                <li>element li 2.a</li>
+                <li>element li 2.b</li>
+                <li>element li 2.c</li>
+                </ul>
+            </li>
+            <li>element li com <a href="#">link</a></li>
+        </ul>     
+</div>
+    <script>
+    function show(mos){
+            console.log(mos)
+        }
+
+    function space(){
+            show(" ___ ")
+            show("  _ ")
+        }
+
+        
+        space()
+
+        show(document.body)  
+        const html = document.body.parentElement
+
+        show(document.body.parentElement === document.body.parentNode)
+        space()
+
+        show(html.parentElement)
+        space()
+        show(html.parentNode)
+        space()
+
+        const h2 = document.querySelector("h2")
+        //show(h2.nextSibling)
+        const h2nextElementSibling = h2.nextElementSibling
+        h2nextElementSibling.style.background = "yellow"
+
+        //show(h2.previousSibling)
+        show(h2.previousElementSibling)
+        space()
+
+        
+        /*
+        childNodes
+        children
+        */
+        const list = document.querySelector("ul")
+        const link = document.querySelector("a")
+
+        show(link)
+        show(link.parentElement.childNodes)
+        show(link.parentElement.children)
+        space()
+
+        show(list)
+        show(list.parentElement.childNodes)
+        show(list.parentElement.children)
+
+        /*
+        firstChild
+        firstElementChild
+        lastChild
+        lastElementChild
+        */
+        space()
+        show(list.firstChild)
+        show(list.firstElementChild)
+
+        space()
+        show(list.lastChild)
+        show(list.lastElementChild)
+        show(list.lastElementChild.firstElementChild)
+
+        /*
+        hasChildNodes()
+        */
+
+        show(list.lastElementChild.hasChildNodes())
+        show(list.lastElementChild.childNodes)
+        show(list.lastElementChild.childNodes[0].nodeType)
+
+    </script>
+</body>
+</html>
