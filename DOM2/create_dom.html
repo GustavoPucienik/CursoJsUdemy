@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<style>
+    .countainer2{
+        background: #ccc;
+        padding: 15px;
+    }
+
+    .countainer2 p{
+        border: 1px solid red;
+        padding: 10px;
+        margin: 15px;
+    }
+</style>
+<body>
+    <!-- beforebegin -->
+<h1 class="hh11">Teste dom</h1>
+    <!--afterbegin-->
+<div class="countainer2">
+    <ul>
+        <p>Paragrafo 1</p>
+        <p>Paragrafo 2</p>
+        <p>Paragrafo 3</p>
+    </ul>
+    <!--beforeend-->
+</div>
+    <!--afterend-->
+
+<div class="countainer">
+    <p>paragrafo</p>
+    <p>paragrafo com <a href="#">link</a></p>
+    <p>paragrafo 2</p>
+
+    <h1 class="hh22">Lista 2</h1>
+        <ul>
+            <li>element li 1</li>
+            <li>element li 2
+                <ul>
+                <li>element li 2.a</li>
+                <li>element li 2.b</li>
+                <li>element li 2.c</li>
+                </ul>
+            </li>
+            <li>element li com <a href="#">link</a></li>
+        </ul>     
+</div>
+    <script>
+    const title = document.createElement("h1")
+    const atributo = document.createAttribute("id")
+    atributo.value = "title 1"
+    title.setAttributeNode(atributo) //mt linha, melhor usar set.Attribute
+
+    title.setAttribute("class", "class inserida dinamicamente")
+    // set attribute better
+    title.setAttribute("style", "color: red")
+
+    const text = document.createTextNode("criar nós no dom")
+    title.appendChild(text)
+  
+    title.textContent = "Texto inserido com textContent" 
+    //textCon tent inserindo o texto na tela de uma forma simples
+    console.log(title)
+
+    document.querySelector(".countainer").appendChild(title)
+    //document.querySelector(".countainer").append(title)
+    //document.querySelector(".countainer").prepend(title, "texto novo")
+
+    const title2 = document.createElement("h1")
+    title2.textContent = "Titulo 2"
+
+    const list = document.querySelector("ul")
+
+    const container = document.querySelector(".countainer")
+
+    //container.insertBefore(title2, list)
+    container.insertBefore(title2, container.firstChild)
+
+    let sublevel = document.querySelector("ul ul")//.cloneNode()
+    // da pra colocar direto na declaração da variavel | |
+    sublevel = sublevel.cloneNode(true)//parametro true retorna tds filhos junto 
+    console.log("sublevel")
+    console.log(sublevel)
+
+    const h1 = document.querySelector("h1")
+
+    container.insertBefore(sublevel, h1.nextElementSibling)
+
+    const segundoParagrafo = container.firstElementChild.nextElementSibling.nextElementSibling
+
+
+    const span = document.createElement("span")
+    span.textContent = "Span dinâmica"
+
+    segundoParagrafo.before(span)
+
+    const container2 = document.querySelector(".countainer2")
+
+    //Insert 
+    //beforebegin, afterbegin, beforeend, afterend
+    container2.insertAdjacentHTML("beforebegin",
+                                  "<b> Texto inserido beforebegin </b>")
+    container2.insertAdjacentHTML("afterbegin", 
+                                  "<b> Texto inserido afterbegin </b>")
+    container2.insertAdjacentHTML("beforeend", 
+                                  "<b> Texto inserido beforeend </b>")
+    container2.insertAdjacentHTML("afterend", 
+                                  "<b> Texto inserido afterend </b>")
+
+    const em = document.createElement("em")
+    em.textContent = "texto com ênfase"
+    container2.insertAdjacentElement("beforeend", em)
+
+    //list.remove()
+    //parentNode.removeChild(node)
+    //list.parentElement.removeChild(list)
+   
+    const parent = document.body
+    const novoChild = container.querySelector("h1")
+    const velhoChild = document.querySelector("h1")
+    parent.replaceChild(novoChild, velhoChild)
+
+    </script>
+</body>
+</html>
