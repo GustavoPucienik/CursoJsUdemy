@@ -45,6 +45,7 @@
         .container>div {
             flex-basis: 50%;
         }
+
     </style>
 </head>
 
@@ -71,17 +72,36 @@
 
     <script type="text/javascript">
 		// crie um nova li com texto "item 2" e a inclua na ul de div com class .alvo
+        
+        const liAdd1Alvo = document.createElement("li");
+        liAdd1Alvo.textContent = "item 2"
+        document.querySelector(".alvo ul").appendChild(liAdd1Alvo);
 
-		//Mova a última li de orignal para alvo (mas antes da primeira li). 
+		//Mova a última li de orignal para alvo (mas antes da primeira li).
         //Em outras palavras, a última li da original deve virar a primeira li de alvo
+        const lastLiOrig = document.querySelector(".original ul").lastElementChild;
+        const firstLiAlvo = document.querySelector(".alvo ul").firstChild;
+        firstLiAlvo.before(lastLiOrig);
 
 		//altere o texto da primeira li de .alvo para "item 0"
 
+        lastLiOrig.textContent = "item 0"
+
 		//clone a ul de .original e a inclua na primeira li de .alvo
 
+        const UlOrig = document.querySelector(".original ul")
+        const cloneUlOrig = UlOrig.cloneNode(true)
+        const alvoUl = document.querySelector(".alvo ul")
+        alvoUl.insertAdjacentElement("afterbegin", cloneUlOrig)
+
+
 		//remova a ultima li (item2) da lista inserida na etapa anterior
+        const lastLialvo = alvoUl.lastElementChild
+        lastLialvo.parentElement.removeChild(lastLialvo)
+        
 
 		//remova as duas li's que sobraram na ul original
+        UlOrig.parentElement.removeChild(UlOrig)
 
 
     </script>
