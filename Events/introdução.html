@@ -14,7 +14,7 @@
 </style>
 <body>
         <h1>Eventos </h1>
-    <div class="container">
+    <div id="container">
         <button id="btn1">Botão 1</button>
         <button id="btn2" onclick="console.log('click com atributo onclick no html')">Botão 2</button>
         <button id="btn3">Botão 3</button>
@@ -55,18 +55,21 @@
         console.log("função anonima no btn2")
     }
 
-    document.addEventListener("click", function(){
+    document.addEventListener("click", function(e){
         console.log("clicou no document")
-    })
+        console.log(e.target)
+        console.log(e.currentTarget) //currentTarget é o proprio elemento atrelado
+                                //nesse bloco é o document
+    },false)
 
     btn3.addEventListener("click", function(queisso){
         console.log(queisso)
         queisso.stopPropagation()
         console.log("Click funçao anonima no botão 3")
-    }, true)
+    }, false)
 
     const container = document.getElementById("container")
-    container;addEventListener("click", function(){
+    container.addEventListener("click", function(){
         console.log("clicou no container")
     }, true)
 
@@ -81,10 +84,12 @@
         })
     }) */
     container2.addEventListener("click", function(e){
-        e.stopPropagation()
-        console.log(e.target.nodeName)
+        /* e.stopPropagation() */
+        console.log("clicou no container2")
+        console.log(e.target)
+        console.log(e.currentTarget)
         if(e.target.nodeName === "BUTTON"){
-            console.log(e.target)
+             /* console.log(e.target)  */
         }
     })
 
