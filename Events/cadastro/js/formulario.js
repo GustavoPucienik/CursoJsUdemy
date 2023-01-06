@@ -17,10 +17,31 @@
     formCadastro.addEventListener("submit", function (e){
         console.log(txtTitulo.value)
         if(!txtTitulo.value){
-            alert("preencha todos os campos")
-            e.preventDefault()
+            showErrorMessage("preencha todos os campos", function(){
             txtTitulo.focus()
+
+            })
+            e.preventDefault()
         }
+    })
+
+    const feedbackMessage = document.getElementById("feedbackMessage")
+    const feedbackMessageCloseBtn = feedbackMessage.getElementsByTagName("button")[0]
+
+    function showErrorMessage(msg, cb){
+        //alert(msg)
+        // feedbackMessage.setAttribute("class","show")
+        feedbackMessage.classList.add("show")
+        feedbackMessage.getElementsByTagName("p")[0].textContent = msg
+
+        if(typeof cb === "function"){
+            cb()
+        }
+
+    }
+
+    feedbackMessageCloseBtn.addEventListener("click", function () {
+        feedbackMessage.classList.remove("show")
     })
 
     //Contador
