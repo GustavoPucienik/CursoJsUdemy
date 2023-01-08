@@ -34,15 +34,32 @@
         feedbackMessage.classList.add("show")
         feedbackMessage.getElementsByTagName("p")[0].textContent = msg
 
-        if(typeof cb === "function"){
-            cb()
+        feedbackMessageCloseBtn.focus()
+
+        function hideErrorMessage(){
+            console.log("clicando close")
+            feedbackMessage.classList.remove("show")
+
+            feedbackMessageCloseBtn.removeEventListener("click", hideErrorMessage)
+            feedbackMessageCloseBtn.removeEventListener("keyup", pressedkeyboardBtn)
+
+            if(typeof cb === "function"){
+                cb()
+            }
         }
 
-    }
+        function pressedkeyboardBtn (e){
+            if(e.keyCode === 27){
+                hideErrorMessage()
+            }
+        }
 
-    feedbackMessageCloseBtn.addEventListener("click", function () {
-        feedbackMessage.classList.remove("show")
-    })
+
+    feedbackMessageCloseBtn.addEventListener("click", hideErrorMessage)
+
+    feedbackMessageCloseBtn.addEventListener("keyup", pressedkeyboardBtn)
+
+    }
 
     //Contador
     //
