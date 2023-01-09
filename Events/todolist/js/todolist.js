@@ -8,44 +8,86 @@
     const ul = document.getElementById("todo-list")
     const lis = document.getElementsByTagName("li")
 
+    let arrTasks = [
+        {
+            name: "task 1",
+            createAt: Date.now(),
+            completed: false
+        }
+    ]
+
     function addEventLi(li){
-        li.addEventListener("click", function(){
+        li.addEventListener("click", function () {
             console.log(this)
-            console.log(this.textContent)
-            console.log(this.innerText)
-            console.log(this.innerHTML)
-            console.log(this.outerHTML)
         })
     }
+    
 
-    function addTask(task){
+    function generateLiTask(obj){
         const li = document.createElement("li")
-        li.className = "todo-item"
         const p = document.createElement("p")
+        const checkBtn = document.createElement("button")
+        const editBtn = document.createElement("i")
+        const deleteBtn = document.createElement("i")
+
+        li.className = "todo-item"
+
+        checkBtn.className = "button-check"
+        checkBtn.innerHTML = "<i class='fas fa-check displayNone'></i>"
+
+        li.appendChild(checkBtn)
+
         p.className = "task-name"
-        p.textContent = task
+        p.textContent = obj.name
         li.appendChild(p)
+
+        editBtn.className = "fas fa-edit"
+        li.appendChild(editBtn)
+
+        //deleteBtn.className = "fas fa-trash-alt"
+        deleteBtn.classList.add("fas","fa-trash-alt")
+        li.appendChild(deleteBtn)
+
         ul.appendChild(li)
 
         addEventLi(li)
 
+        return li
+    }
+
+    function renderTasks(){
+        
+        ul.innerHTML = ""
+        arrTasks.forEach(task => {
+            ul.appendChild(generateLiTask(task))
+        });
+    }
+
+    function addTask(task){
+        arrTasks.push({
+            name: task,
+            createAt: Date.now(),
+            completed: false
+        })
     }
 
     todoAddForm.addEventListener("submit", function(e){
         e.preventDefault()
 
-        /* ul.innerHTML += `
+         /*  ul.innerHTML += `
         <li class="todo-item">
                     <p class="task-name">${itemInput.value}</p>
 
-                </li>` */
+                </li>`   */
         addTask(itemInput.value)
+        renderTasks()
+
         itemInput.value = ""
         itemInput.focus()
     });
 
-    [...lis].forEach(li => {
-        addEventLi(li)
-    });
+    
+
+    renderTasks();
 
 })()
