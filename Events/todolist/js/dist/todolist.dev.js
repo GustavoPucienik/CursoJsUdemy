@@ -14,12 +14,11 @@
     createAt: Date.now(),
     completed: false
   }];
-
-  function addEventLi(li) {
-    li.addEventListener("click", function () {
-      console.log(this);
-    });
-  }
+  /*     function addEventLi(li){
+          li.addEventListener("click", function () {
+              console.log(this)
+          })
+      } */
 
   function generateLiTask(obj) {
     var li = document.createElement("li");
@@ -30,11 +29,13 @@
     li.className = "todo-item";
     checkBtn.className = "button-check";
     checkBtn.innerHTML = "<i class='fas fa-check displayNone'></i>";
+    checkBtn.setAttribute("data-action", "checkButton");
     li.appendChild(checkBtn);
     p.className = "task-name";
     p.textContent = obj.name;
     li.appendChild(p);
     editBtn.className = "fas fa-edit";
+    editBtn.setAttribute("data-action", "editButton");
     li.appendChild(editBtn);
     var containerEdit = document.createElement("div");
     containerEdit.className = "editContainer";
@@ -45,17 +46,21 @@
     var containerEditButton = document.createElement("button");
     containerEditButton.className = "editButton";
     containerEditButton.textContent = "Edit";
+    containerEditButton.setAttribute("data-action", "containerEditButton");
     containerEdit.appendChild(containerEditButton);
     var containerCancelButton = document.createElement("button");
     containerCancelButton.className = "cancelButton";
     containerCancelButton.textContent = "Cancel";
+    containerCancelButton.setAttribute("data-action", "containerCancelButton");
     containerEdit.appendChild(containerCancelButton);
     li.appendChild(containerEdit); //deleteBtn.className = "fas fa-trash-alt"
 
     deleteBtn.classList.add("fas", "fa-trash-alt");
+    deleteBtn.setAttribute("data-action", "deleteButton");
     li.appendChild(deleteBtn);
     ul.appendChild(li);
-    addEventLi(li);
+    /* addEventLi(li) */
+
     return li;
   }
 
@@ -74,6 +79,11 @@
     });
   }
 
+  function clickedUl(e) {
+    console.log(e.target);
+    console.log(e.target.getAttribute("data-action"));
+  }
+
   todoAddForm.addEventListener("submit", function (e) {
     e.preventDefault();
     /*  ul.innerHTML += `
@@ -86,5 +96,6 @@
     itemInput.value = "";
     itemInput.focus();
   });
+  ul.addEventListener("click", clickedUl);
   renderTasks();
 })();
