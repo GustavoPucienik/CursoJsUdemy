@@ -44,6 +44,24 @@
         editBtn.className = "fas fa-edit"
         li.appendChild(editBtn)
 
+        const containerEdit = document.createElement("div")
+        containerEdit.className = "editContainer"
+        const inputEdit = document.createElement("input")
+        inputEdit.setAttribute("type","text")
+        inputEdit.className = "editInput"
+
+        containerEdit.appendChild(inputEdit)
+        const containerEditButton = document.createElement("button")
+        containerEditButton.className = "editButton"
+        containerEditButton.textContent = "Edit"
+        containerEdit.appendChild(containerEditButton)
+        const containerCancelButton = document.createElement("button")
+        containerCancelButton.className = "cancelButton"
+        containerCancelButton.textContent = "Cancel"
+        containerEdit.appendChild(containerCancelButton)
+
+        li.appendChild(containerEdit)
+
         //deleteBtn.className = "fas fa-trash-alt"
         deleteBtn.classList.add("fas","fa-trash-alt")
         li.appendChild(deleteBtn)
