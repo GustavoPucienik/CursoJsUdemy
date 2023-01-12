@@ -54,6 +54,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     var inputEdit = document.createElement("input");
     inputEdit.setAttribute("type", "text");
     inputEdit.className = "editInput";
+    inputEdit.value = obj.name;
     containerEdit.appendChild(inputEdit);
     var containerEditButton = document.createElement("button");
     containerEditButton.className = "editButton";
@@ -119,14 +120,26 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     var actions = {
       editButton: function editButton() {
-        console.log("editBtn no objeto");
+        var editContainer = currentLi.querySelector(".editContainer");
+
+        _toConsumableArray(ul.querySelectorAll(".editContainer")).forEach(function (container) {
+          container.removeAttribute("style");
+        });
+
+        editContainer.style.display = "flex";
       },
       deleteButton: function deleteButton() {
         arrTasks.splice(currentLiIndex, 1);
-        console.log(arrTasks); //renderTasks()
-        //currentLi.remove()
+        console.log(arrTasks);
+        renderTasks(); //currentLi.remove()
         //currentLi.parentElement.removeChild(currentLi)
-      }
+      },
+      containerEditButton: function containerEditButton() {
+        var val = currentLi.querySelector(".editInput").value;
+        arrTasks[currentLiIndex].name = val;
+        renderTasks();
+      },
+      containerCancelButton: function containerCancelButton() {}
     };
 
     if (actions[dataAction]) {

@@ -56,6 +56,7 @@
         const inputEdit = document.createElement("input")
         inputEdit.setAttribute("type","text")
         inputEdit.className = "editInput"
+        inputEdit.value = obj.name
 
         containerEdit.appendChild(inputEdit)
         const containerEditButton = document.createElement("button")
@@ -127,13 +128,28 @@
         
         const actions = {
             editButton: function(){
-                console.log("editBtn no objeto")
-            }, deleteButton: function(){
+                const editContainer = currentLi.querySelector(".editContainer");
+
+                [...ul.querySelectorAll(".editContainer")].forEach( container => {
+                    container.removeAttribute("style")
+                })
+
+                editContainer.style.display = "flex";
+            },
+            deleteButton: function(){
                 arrTasks.splice(currentLiIndex, 1)
                 console.log(arrTasks)
-                //renderTasks()
+                renderTasks()
                 //currentLi.remove()
                 //currentLi.parentElement.removeChild(currentLi)
+            },
+            containerEditButton: function(){
+                const val = currentLi.querySelector(".editInput").value
+                arrTasks[currentLiIndex].name = val
+                renderTasks()
+            },
+            containerCancelButton: function(){
+                
             }
         }
         if(actions[dataAction]){
