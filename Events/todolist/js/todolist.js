@@ -13,6 +13,11 @@
             name: "task 1",
             createAt: Date.now(),
             completed: false
+        },
+        {
+            name: "task 2",
+            createAt: Date.now(),
+            completed: false
         }
     ]
 
@@ -95,10 +100,50 @@
     }
 
     function clickedUl(e){
-        console.log(e.target)
-        console.log(e.target.getAttribute("data-action"))
+        const dataAction = e.target.getAttribute("data-action")
+        if(!dataAction) return
+
+        let currentLi = e.target
+        while(currentLi.nodeName !== "LI"){
+            currentLi = currentLi.parentElement
+        }
+        const currentLiIndex = [...lis].indexOf(currentLi)
+
+        /* if(e.target.className === "fas fa-edit"){
+        if(e.target.classList.contains("fa-edit")){
+            if(e.target.getAttribute("data-action") === "editBtn")
+                console.log("é edit")
+        
+        }}
+
+        switch(e.target.getAttribute("data-action")){
+            case "EditBtn" :
+                console.log("Edit btn pelo switch")
+                break
+            default:
+                console.log("Não é edit")
+        }
+ */
+        
+        const actions = {
+            editButton: function(){
+                console.log("editBtn no objeto")
+            }, deleteButton: function(){
+                arrTasks.splice(currentLiIndex, 1)
+                console.log(arrTasks)
+                //renderTasks()
+                //currentLi.remove()
+                //currentLi.parentElement.removeChild(currentLi)
+            }
+        }
+        if(actions[dataAction]){
+            actions[dataAction]()
+        }
+
 
     }
+
+    
 
     todoAddForm.addEventListener("submit", function(e){
         e.preventDefault()
