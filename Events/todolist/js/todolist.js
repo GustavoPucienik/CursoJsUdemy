@@ -8,18 +8,7 @@
     const ul = document.getElementById("todo-list")
     const lis = document.getElementsByTagName("li")
 
-    let arrTasks = [
-        {
-            name: "task 1",
-            createAt: Date.now(),
-            completed: false
-        },
-        {
-            name: "task 2",
-            createAt: Date.now(),
-            completed: false
-        }
-    ]
+    let arrTasks = getSavedData()
 
 /*     function addEventLi(li){
         li.addEventListener("click", function () {
@@ -27,6 +16,30 @@
         })
     } */
     
+    function getSavedData (){
+        let tasksData = localStorage.getItem("tasks")
+        tasksData = JSON.parse(tasksData)
+
+        return tasksData.length ? tasksData : [
+            {
+                name: "task 1",
+                createAt: Date.now(),
+                completed: false
+            },
+            {
+                name: "task 2",
+                createAt: Date.now(),
+                completed: false
+            }
+        ]
+
+        
+    }
+    function setNewDate(){
+        return localStorage.setItem("tasks", JSON.stringify(arrTasks))
+    }
+
+    setNewDate()
 
     function generateLiTask(obj){
         const li = document.createElement("li")
@@ -98,6 +111,7 @@
             createAt: Date.now(),
             completed: false
         })
+        setNewDate()
     }
 
     function clickedUl(e){
@@ -142,11 +156,14 @@
                 renderTasks()
                 //currentLi.remove()
                 //currentLi.parentElement.removeChild(currentLi)
+
+                setNewDate()
             },
             containerEditButton: function(){
                 const val = currentLi.querySelector(".editInput").value
                 arrTasks[currentLiIndex].name = val
                 renderTasks()
+                setNewDate()
             },
             containerCancelButton: function(){
                 currentLi.querySelector(".editContainer").removeAttribute("style")
@@ -161,7 +178,7 @@
                 } else{
                     currentLi.querySelector(".fa-check").classList.add("displayNone")
                 }
-
+                setNewDate()
                 renderTasks()
             }
         }

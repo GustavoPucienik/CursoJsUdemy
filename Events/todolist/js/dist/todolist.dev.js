@@ -17,20 +17,32 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var todoAddForm = document.getElementById("todo-add");
   var ul = document.getElementById("todo-list");
   var lis = document.getElementsByTagName("li");
-  var arrTasks = [{
-    name: "task 1",
-    createAt: Date.now(),
-    completed: false
-  }, {
-    name: "task 2",
-    createAt: Date.now(),
-    completed: false
-  }];
+  var arrTasks = getSavedData();
   /*     function addEventLi(li){
           li.addEventListener("click", function () {
               console.log(this)
           })
       } */
+
+  function getSavedData() {
+    var tasksData = localStorage.getItem("tasks");
+    tasksData = JSON.parse(tasksData);
+    return tasksData.length ? tasksData : [{
+      name: "task 1",
+      createAt: Date.now(),
+      completed: false
+    }, {
+      name: "task 2",
+      createAt: Date.now(),
+      completed: false
+    }];
+  }
+
+  function setNewDate() {
+    return localStorage.setItem("tasks", JSON.stringify(arrTasks));
+  }
+
+  setNewDate();
 
   function generateLiTask(obj) {
     var li = document.createElement("li");
@@ -90,6 +102,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       createAt: Date.now(),
       completed: false
     });
+    setNewDate();
   }
 
   function clickedUl(e) {
@@ -133,11 +146,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         console.log(arrTasks);
         renderTasks(); //currentLi.remove()
         //currentLi.parentElement.removeChild(currentLi)
+
+        setNewDate();
       },
       containerEditButton: function containerEditButton() {
         var val = currentLi.querySelector(".editInput").value;
         arrTasks[currentLiIndex].name = val;
         renderTasks();
+        setNewDate();
       },
       containerCancelButton: function containerCancelButton() {
         currentLi.querySelector(".editContainer").removeAttribute("style");
@@ -152,6 +168,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           currentLi.querySelector(".fa-check").classList.add("displayNone");
         }
 
+        setNewDate();
         renderTasks();
       }
     };
