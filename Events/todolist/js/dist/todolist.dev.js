@@ -35,14 +35,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   function generateLiTask(obj) {
     var li = document.createElement("li");
     var p = document.createElement("p");
-    var checkBtn = document.createElement("button");
+    var checkButton = document.createElement("button");
     var editBtn = document.createElement("i");
     var deleteBtn = document.createElement("i");
     li.className = "todo-item";
-    checkBtn.className = "button-check";
-    checkBtn.innerHTML = "<i class='fas fa-check displayNone'></i>";
-    checkBtn.setAttribute("data-action", "checkButton");
-    li.appendChild(checkBtn);
+    checkButton.className = "button-check";
+    checkButton.innerHTML = "<i class=\"fas fa-check ".concat(obj.completed ? "" : "displayNone", "\" data-action=\"checkButton\"></i>");
+    checkButton.setAttribute("data-action", "checkButton");
+    li.appendChild(checkButton);
     p.className = "task-name";
     p.textContent = obj.name;
     li.appendChild(p);
@@ -142,6 +142,17 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       containerCancelButton: function containerCancelButton() {
         currentLi.querySelector(".editContainer").removeAttribute("style");
         currentLi.querySelector(".editInput").value = arrTasks[currentLiIndex].name;
+      },
+      checkButton: function checkButton() {
+        arrTasks[currentLiIndex].completed = !arrTasks[currentLiIndex].completed;
+
+        if (arrTasks[currentLiIndex].completed) {
+          currentLi.querySelector(".fa-check").classList.remove("displayNone");
+        } else {
+          currentLi.querySelector(".fa-check").classList.add("displayNone");
+        }
+
+        renderTasks();
       }
     };
 
