@@ -27,7 +27,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   function getSavedData() {
     var tasksData = localStorage.getItem("tasks");
     tasksData = JSON.parse(tasksData);
-    return tasksData.length ? tasksData : [{
+    return tasksData && tasksData.length ? tasksData : [{
       name: "task 1",
       createAt: Date.now(),
       completed: false
