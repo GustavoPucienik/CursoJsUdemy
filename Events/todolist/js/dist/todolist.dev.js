@@ -139,7 +139,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         arrTasks[currentLiIndex].name = val;
         renderTasks();
       },
-      containerCancelButton: function containerCancelButton() {}
+      containerCancelButton: function containerCancelButton() {
+        currentLi.querySelector(".editContainer").removeAttribute("style");
+        currentLi.querySelector(".editInput").value = arrTasks[currentLiIndex].name;
+      }
     };
 
     if (actions[dataAction]) {
