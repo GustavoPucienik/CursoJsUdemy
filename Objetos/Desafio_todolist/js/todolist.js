@@ -23,13 +23,12 @@
         this.createdAt = createdAt || Date.now()
         this.updatedAt = updatedAt || null
         this.toggleDone = function(){
-            this.completed = !this.completed
-
+        this.completed = !this.completed
+    } 
         this.getName = () => _name
         this.setName = function (newName) { 
             _name = newName
             this.updatedAt = Date.now()
-        } 
         } 
 	}
 
