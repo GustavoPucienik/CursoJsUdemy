@@ -10,25 +10,44 @@
         // o objeto retornado por essa funcao deve ter quatro propriedades:
         //  - name - string - obrigatório, 
         //  - completed - boolean - opcional, false é o default, 
-        //  - createdAt - timestamp - opcional, timestamp atual é o valor default) 
+        //  - createdAt - timestamp - opcional, timestamp atual é o valor default Date.now()
         //  - updatedAt - timestamp - opcional, null é o valor default
         // o objeto retornado por essa funcao deve ter um método chamado toggleDone, que deve inverter o boolean completed
+
+        if (!name){
+            throw new Error(" precisa de parametro name")
+        }
+        let _name = name
+        //this.name = name
+        this.completed = completed || false
+        this.createdAt = createdAt || Date.now()
+        this.updatedAt = updatedAt || null
+        this.toggleDone = function(){
+            this.completed = !this.completed
+
+        this.getName = () => _name
+        this.setName = function (newName) { 
+            _name = newName
+            this.updatedAt = Date.now()
+        } 
+        } 
 	}
 
 	let arrTasks = [
 		{
-			name: "task 1",
+			name: "taskNome 1",
 			completed: true,
 			createdAt: 1592667375012,
 			updatedAt: null
 		},
 		{
-			name: "task 2",
+			name: "taskNome 2",
+			completed: true,
 			createdAt: 1581667345723,
 			updatedAt: 1592667325018
 		},
 		{
-			name: "task 3",
+			name: "taskNome 3",
 			completed: true,
 			createdAt: 1592667355018,
 			updatedAt: 1593677457010
@@ -38,7 +57,10 @@
 
     // a partir de um array de objetos literais, crie um array contendo instancias de Tasks. 
     // Essa array deve chamar arrInstancesTasks
-	// const arrInstancesTasks = DESCOMENTE ESSA LINHA E RESOLVA O ENUNCIADO
+	const arrInstancesTasks = arrTasks.map( taskNome => {
+        const {name, completed, createdAt, updatedAt} = taskNome
+        return new Task(name, completed, createdAt, updatedAt)
+    })
 
 
 
@@ -66,8 +88,8 @@
 
         li.appendChild(checkButton)
 
-        p.className = "task-name"
-        p.textContent = obj.name
+        p.className = "taskNome-name"
+        p.textContent = obj.getName()
         li.appendChild(p)
 
         editButton.className = "fas fa-edit"
@@ -80,7 +102,7 @@
         const inputEdit = document.createElement("input")
         inputEdit.setAttribute("type", "text")
         inputEdit.className = "editInput"
-        inputEdit.value = obj.name
+        inputEdit.value = obj.getName()
 
         containerEdit.appendChild(inputEdit)
         const containerEditButton = document.createElement("button")
@@ -112,8 +134,9 @@
         });
     }
 
-    function addTask(task) {
+    function addTask(taskNome) {
         // adicione uma nova instancia de Task
+        arrInstancesTasks.push(new Task(taskNome))
         renderTasks()
 
     }
@@ -136,29 +159,24 @@
                 [...ul.querySelectorAll(".editContainer")].forEach(container => {
                     container.removeAttribute("style")
                 });
-
                 editContainer.style.display = "flex";
-
-
             },
             deleteButton: function () {
                 arrInstancesTasks.splice(currentLiIndex, 1)
                 renderTasks()
-
             },
             containerEditButton: function () {
                 const val = currentLi.querySelector(".editInput").value
-                arrInstancesTasks[currentLiIndex].name = val
+                arrInstancesTasks[currentLiIndex].setName(val)
                 renderTasks()
             },
             containerCancelButton: function () {
                 currentLi.querySelector(".editContainer").removeAttribute("style")
-                currentLi.querySelector(".editInput").value = arrInstancesTasks[currentLiIndex].name
+                currentLi.querySelector(".editInput").value = arrInstancesTasks[currentLiIndex].getName()
             },
             checkButton: function () {
-
                 // DEVE USAR O MÉTODO toggleDone do objeto correto
-
+                arrInstancesTasks[currentLiIndex].toggleDone()
 	            renderTasks()
             }
         }
