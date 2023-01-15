@@ -15,6 +15,7 @@
         // o objeto retornado por essa funcao deve ter um método chamado toggleDone, que deve inverter o boolean completed
 
         if (!name){
+            alert("Campo vazio")
             throw new Error(" precisa de parametro name")
         }
         let _name = name
