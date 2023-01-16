@@ -54,7 +54,22 @@ function mascara(num){
     let hifenPosi = num.indexOf("-")
     let numInicio = num.slice(0, hifenPosi)
     let numFim = num.slice(hifenPosi + 1)
-    return `${numInicio[0].padEnd(numInicio.length, "*")} `
+    var doisUltNum = numFim.slice(-2)
+    return `${numInicio[0].padEnd(numInicio.length, "*")}-${doisUltNum.padStart(numFim.length, "*")}`
 }
-mascara(telefone)
-console.log(telefone)
+
+console.log(mascara(telefone0))
+console.log("----")
+
+let str2 = "Hoje é sabado"
+console.log(str2.startsWith("Ho", 0))
+console.log(str2.startsWith("j", 2))
+console.log(str2.endsWith("do"))
+console.log("----")
+
+let str3 = "CABCDEFGH"
+console.log(str3.charAt(1)), console.log(str3[2])
+console.log(str3.charCodeAt(0)),console.log(str3.charCodeAt(3))
+console.log(str3.charCodeAt(2))
+
+
