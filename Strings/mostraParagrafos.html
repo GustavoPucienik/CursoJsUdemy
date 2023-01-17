@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
 	<title></title>
@@ -69,7 +69,7 @@
 <body>
 	<div id="container">
 		<div class="card">
-			<p>Lorem ipsum dolor sit amet, <b>consectetur adipisicing elit, </b>sed do eiusmod
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -92,6 +92,31 @@
 
 	<script type="text/javascript">
 
+		;(function(){
+			const paragrafos = Array.from(document.querySelectorAll(".card p"))
+			const originTexts = paragrafos.map(p => p.innerText)
+			const maxLength = 100
+
+			paragrafos.forEach( p => {
+				if(p.innerText.length > 99){
+					p.textContent = p.innerText.substring(0, maxLength) + "..."
+					const btn = document.createElement("button")
+					/* const abcdede = btn.createElement("i")
+					abcdede.className = "fas fa-chevron-down"
+					p.parentElement.classList.add("text-hidden")
+					p.parentElement.appendChild(btn)
+					btn.appendChild(abcdede) */
+
+					btn.innerHTML = '<i class="fas fa-chevron-down"></i>'
+					p.parentElement.classList.add("text-hidden")
+
+					p.parentElement.appendChild(btn)
+				} 
+			})
+				
+			
+
+		})()
 
 
 	</script>
