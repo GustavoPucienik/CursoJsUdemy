@@ -36,10 +36,10 @@ console.log(strAsObj)
 console.log(strAsObj.valueOf())//toString()funciona igual para strings
 
 str1 = "    " + str1 + "      "
-/* console.log(str1)
+ console.log(str1)
 console.log(str1.trim())
 console.log(str1.trimEnd())
-console.log(str1.trimStart()) */
+console.log(str1.trimStart())
 
 /* str1 = "0123456789"
 console.log(str1.padStart(20))
@@ -58,18 +58,18 @@ function mascara(num){
     return `${numInicio[0].padEnd(numInicio.length, "*")}-${doisUltNum.padStart(numFim.length, "*")}`
 }
 
-console.log(mascara(telefone0))
-console.log("----")
+//console.log(mascara(telefone0))
+//console.log("----")
 
 let str2 = "Hoje é sabado"
-console.log(str2.startsWith("Ho", 0))
-console.log(str2.startsWith("j", 2))
-console.log(str2.endsWith("do"))
-console.log("----")
+//console.log(str2.startsWith("Ho", 0))
+//console.log(str2.startsWith("j", 2))
+//console.log(str2.endsWith("do"))
+//console.log("----")
 
 let str3 = "CABCDEFGH"
-console.log(str3.charAt(1)), console.log(str3[2])
-console.log(str3.charCodeAt(0)),console.log(str3.charCodeAt(3))
-console.log(str3.charCodeAt(2))
+//console.log(str3.charAt(1)), console.log(str3[2])
+//console.log(str3.charCodeAt(0)),console.log(str3.charCodeAt(3))
+//console.log(str3.charCodeAt(2))
 
 
