@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+</head>
+<body>
+    <h1>History</h1>
+    <button id="btnBack">Volta</button>
+    <br>
+    <button id="btnForward">Avança</button>
+    <br>
+    <button id="btnClose">Close</button>
+    <a href="http://google.com">Google</a>
+    
+</body>
+<script>
+    console.log(opener)
+    document.getElementById("btnBack").addEventListener("click", () => history.back())
+    document.getElementById("btnForward").addEventListener("click",() =>history.forward())
+    document.getElementById("btnClose").addEventListener("click", () => close())
+</script>
+</html>
