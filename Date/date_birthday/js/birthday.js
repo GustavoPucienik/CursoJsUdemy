@@ -8,9 +8,8 @@ function quantoFaltaPara(m, d) {
     let yearNow = dataNow.getFullYear()
 
     let dataBirthday = new Date(yearNow, m-1, d)
-
-    const dataNowTS = +dataNow
-    const dataBirthdayTS = dataBirthday
+    const dataNowTS = +dataNow           //o mais na frente transforma a data em timestamp
+    const dataBirthdayTS = +dataBirthday //o mais na frente transforma a data em timestamp
 
     if(dataBirthdayTS < dataNowTS){
         dataBirthday.setFullYear(++yearNow)

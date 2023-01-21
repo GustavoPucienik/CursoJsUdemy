@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intervalos</title>
+</head>
+<body>
+
+    <div></div>
+    
+
+    <script>
+
+        const tempoInicio = Date.now()
+
+        let n = 0
+        let str = ``
+        var d = document.querySelector("div")
+        setTimeout( function(){
+            for(let i = 0; i < 1000; i++){
+            str += `i: ${i}-- <br>`
+            d.textContent += str
+        }}, 3000)
+
+        let intervalo = setInterval(function(){
+           console.log(`Interval: ${n++}`)
+            if(n > 10){
+                clearInterval(intervalo)
+                const tempofinal = Date.now()
+                console.log(tempofinal - tempoInicio)
+            }}, 1000)
+                     
+
+    </script>
+</body>
+</html>

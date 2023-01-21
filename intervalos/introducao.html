@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intervalos</title>
+</head>
+<body>
+
+    <div></div>
+    
+
+    <script>
+
+        const tempoInicio = Date.now()
+
+
+        setTimeout(function(){
+            console.log("timeout depois de 2s")
+            const tempoFinal = Date.now()
+            console.log(tempoFinal - tempoInicio)
+        }, 2000) //define uma funçao que executa depois de um tempo determinaod pelo segundo parametro
+        var n = 0
+
+        /* for(let i = 0; i < 1; i++){
+            setInterval(function(){
+            console.log(`time out ${n}`)
+            n = n + 1
+        }, 1000)} */ //acredite ou não levou uns 15 min pra conseguir acertar isso kkkkk
+                // estava tentando somar n+1 fora do setInterval
+
+        let str = ``
+        var d = document.querySelector("div")
+        for(let i = 0; i < 1000; i++){
+            str += `i: ${i}-- <br>`
+            d.textContent += str
+        }
+
+
+        let intervalo = setInterval(function(){console.log(`Interval: ${n++}`)
+        if(n > 10){
+            clearInterval(intervalo)
+        }}, 1000)
+                     
+
+    </script>
+</body>
+</html>
