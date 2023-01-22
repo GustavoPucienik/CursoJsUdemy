@@ -20,3 +20,9 @@ console.log(location); // .href, .hash, .search, .protocol, .pathname
 
 console.log(navigator); //.userAgent, .plugins, .cookies, .cookiesEnabled
 //.plataform mostra o sistema operacional que carrega a pagina
+
+var x = 0;
+var y = 50;
+scrollTo(x, y); //vai para a position 50px
+
+scrollBy(x, y); //desce mais 50px

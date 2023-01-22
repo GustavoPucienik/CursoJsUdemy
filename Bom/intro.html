@@ -11,14 +11,58 @@
     <a href="history.html">Vai para a history.html</a>
     <br>
     <button>Abre com o metodo open()</button>
+    <br>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto saepe, dignissimos itaque ipsa eos sint earum numquam vel explicabo, cum neque tempora dolore aspernatur accusantium recusandae blanditiis quasi laboriosam!</p>
+
 </body>
 <script>
-    var teste = "variavel de intro.html"
+    var teste = "Variavel de intro.html"
+
+    function teste2(){
+        console.log("teste2 chamado.")
+    }
+
     console.log(opener)
 
     document.querySelector("button").addEventListener("click", function(){
         window.open("history.html", "nome-janela", "width=600,heigth=300")
     })
+
+    window.addEventListener("load", function(){
+        console.log("load")//evento load é disparado quando TODA a pagina é carregada
+    })
+
+    window.addEventListener("DOMContentLoaded", function(){
+        console.log("DOMContentLoad")//é disparado quando todos os nós de dom estarem prontos para serem usados
+    })
+
+    window.addEventListener("resize", function(){
+        console.log("resize", innerWidth, innerHeight)
+    })
+
+    window.addEventListener("scroll", function(){
+        console.log("scroll", pageXOffset, pageYOffset)
+    })
+
+    windows.addEventListener("unload", function(){
+        console.log("unload")
+    })
+
+    windows.addEventListener("beforeunload", function(){
+        console.log("beforeunload",)
+        alert("alert bloqueado")//normalmente o browser vai bloquear o alert e continuar o fechamento de pagina
+    })
+
 //confirm("confirma, que é maior de 18?")//se confirmado retorna valor true, se cancelado false
 //open(), close() Metodo close só funciona se você abrir com metodo open
 //print() abre janela para imprimir a pagina
