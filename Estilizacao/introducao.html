@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        div{
+            background-color: blueviolet !important;/*!important faz esse css ganhar prioridade do inline, mas continua retornando red no 
+            div.style.backgroundColor no console*/
+            padding: 2em;
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, distinctio? Libero reprehenderit iure harum commodi rem aut autem aperiam, recusandae eius fuga repellat minus possimus aliquam cupiditate ab cum tempore!</p>
+    <div style="background: red">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nulla, hic quos maiores commodi, in cumque facere rem iure reiciendis culpa cupiditate quidem velit facilis quia exercitationem deleniti a libero.</div>
+</body>
+<script>
+//getComputedStyle()
+//elemento.offsetHeigth elemento.offsetWidth //tamanho do elemento
+//elemento.offsettLeft elemento.offsetTop     //valor de distancia
+
+//div.getBoundingClientRect() // mostra informações do elemento
+
+let div = document.querySelector("div")
+
+</script>
+</html>
