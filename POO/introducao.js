@@ -16,4 +16,5 @@ Animal.prototype.obterTitulo = function(){
 }
 Animal.prototype.tipo = "desconhecido"
 
-Animal.constructor//.constructor mostra a função construtora
+console.log(Animal.constructor)//.constructor mostra a função construtora
+console.log(dog.tipo)
