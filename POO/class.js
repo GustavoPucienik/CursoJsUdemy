@@ -1,13 +1,27 @@
 //prototype
 
 function Animal(tipo){
+    if(this instanceof Animal){
     if(tipo) this.tipo = tipo
+    } else{
+        throw new Error("Animal precisa ser criado com operador new")
+    }
 }
 
-let dog = new Animal("mamifero")
-let cat = new Animal("mamifero")
-let snake = new Animal("reptil")
+//let dog = new Animal("Mamifero")
+let cat = new Animal("Mamifero")
+let snake = new Animal("Reptil")
 let fish = new Animal()
+
+function Cachorro(nome){
+    this.nome = nome
+    Animal.call(this, "Mamifero")
+    this.constructor = Cachorro
+}
+
+Cachorro.prototype = new Animal("Mamifero")
+
+let dog = new Cachorro("Dog")
 
 let arr = [1, 2, 3]
 
@@ -29,10 +43,19 @@ class AnimalC{
     }
 }
 
+class GatoC extends AnimalC {
+    constructor(nome){
+        super("mamifero")
+        this.nome = nome
+    }
+}
+
     AnimalC.prototype.tipo = "Desconhecido"
 
 let animal = new AnimalC("anfibio")
 let sapo = new AnimalC()
+
+let mingau = new GatoC("Mingau")
 
 //console.log(animal)
 //console.log(cat)
@@ -42,5 +65,6 @@ let sapo = new AnimalC()
 //console.log(AnimalC)
 console.log(Animal.prototype)
 console.log(AnimalC.prototype)
+console.log(mingau)
 
 
