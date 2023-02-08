@@ -8,10 +8,6 @@ function Animal(tipo){
     }
 }
 
-//let dog = new Animal("Mamifero")
-let cat = new Animal("Mamifero")
-let snake = new Animal("Reptil")
-let fish = new Animal()
 
 function Cachorro(nome){
     this.nome = nome
@@ -20,6 +16,7 @@ function Cachorro(nome){
 }
 
 Cachorro.prototype = new Animal("Mamifero")
+Cachorro.prototype.constructor = Cachorro
 
 let dog = new Cachorro("Dog")
 
@@ -63,8 +60,7 @@ let mingau = new GatoC("Mingau")
 //console.log(typeof cat)
 //console.log(Animal)
 //console.log(AnimalC)
-console.log(Animal.prototype)
-console.log(AnimalC.prototype)
-console.log(mingau)
-
-
+//console.log(Animal.prototype)
+//console.log(AnimalC.prototype)
+console.log(mingau.constructor)
+console.log(dog.constructor)
