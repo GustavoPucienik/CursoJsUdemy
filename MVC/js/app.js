@@ -1,12 +1,36 @@
-alunos.forEach(aluno => {
-    aluno.media = {}
+const alunos = [
+    {
+      _id: 0,
+      nome: "chico melato",
+      notas: {
+        portugues: [10, 10, 2, 2],
+        matematica: [2, 10, 2, 2],
+        historia: [10, 7, 3, 5],
+        ciencias: [9, 8, 5, 3],
+      },
+    },
+    {
+      _id: 1,
+      nome: "talita lima",
+      notas: {
+        portugues: [10, 10, 4, 4],
+        matematica: [7, 6, 6, 5],
+        historia: [5, 8, 6, 6],
+        ciencias: [7, 7, 8, 9],
+      },
+    },
+  ];
 
-    for(let materia in aluno.notas){
-        aluno.media[materia] = avarege(...aluno.notas[materia])
-    }
+
+const alunosService = new AlunoService()
+
+
+// Calcula a media por materia de casa aluno e cria uma propriedade chamada media
+alunos.forEach(aluno => {
+    alunosService.add(new AlunoModel(aluno))
 })
 
-//inserir no thead "nome" e cada uma das materias
+/* //inserir no thead "nome" e cada uma das materias
 const htmlHeader = document.createElement("tr")
 htmlHeader.innerHTML = "<td>Nome</td>"
 
@@ -60,4 +84,4 @@ document.querySelector("form").addEventListener("submit", function(e) {
       alunos.push(newAluno)
 
       render()
-})
+}) */

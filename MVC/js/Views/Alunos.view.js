@@ -1,0 +1,3 @@
+class AlunosView {
+    constructor(){}
+}
