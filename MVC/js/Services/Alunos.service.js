@@ -1,4 +1,4 @@
-class AlunoService{
+class AlunosService{
     constructor(){
         this.alunos = []
     }

@@ -1,9 +1,9 @@
 class AlunoModel{
-    constructor(aluno){
+    /* constructor(aluno){
         this.nome = aluno.nome
-    }
+    } */
     constructor({nome, _id, notas} = {notas:{}}){
-        this.nome = aluno.nome
+        this.nome = nome
         this._id = (_id !== undefined) ? _id : this.generateId()
         this.notas = {...notas}
 
@@ -13,8 +13,8 @@ class AlunoModel{
 
         this.media = {}
 
-        for(let materia in aluno.notas){
-            aluno.media[materia] = avarege(...aluno.notas[materia])
+        for(let materia in this.notas){
+            this.media[materia] = avarege(...this.notas[materia])
         }
     }
 
