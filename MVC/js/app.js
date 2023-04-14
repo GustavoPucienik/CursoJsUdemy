@@ -34,23 +34,18 @@ alunos.forEach(aluno => {
 
 const alunosView = new AlunosView(document.querySelector('[data-table-alunos]'))
 
-  const alunosController = new AlunosController(alunosService,alunosView)
-
-/*
-
-// percorrer cada aluno e gerar o html para incluir do tbody
-function render(){
-  
-}
-
-render()
+const alunosController = new AlunosController(alunosService,alunosView)
 
 
 //adicionar alunos
 document.querySelector("form").addEventListener("submit", function(e) {
     e.preventDefault()
     const nome = document.getElementById("first_name").value
-    const newAluno = {
+
+    alunosController.add({nome})
+
+  }) 
+/*    const newAluno = {
         _id: 0,
         nome,
         notas: {
@@ -70,4 +65,4 @@ document.querySelector("form").addEventListener("submit", function(e) {
       alunos.push(newAluno)
 
       render()
-}) */
+*/
