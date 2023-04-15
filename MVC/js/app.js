@@ -1,4 +1,4 @@
-const alunos = [
+/* const alunos = [
     {
       _id: 0,
       nome: "chico melato",
@@ -20,15 +20,14 @@ const alunos = [
       },
     },
   ];
-
+ */
 
 const alunosService = new AlunosService()
 
 
-// Calcula a media por materia de casa aluno e cria uma propriedade chamada media
-alunos.forEach(aluno => {
+/* alunos.forEach(aluno => {
     alunosService.add(new AlunoModel(aluno))
-})
+}) */
 
 
 
