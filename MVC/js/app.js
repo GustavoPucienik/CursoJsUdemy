@@ -1,4 +1,4 @@
-/* const alunos = [
+const alunosOld = [
     {
       _id: 0,
       nome: "chico melato",
@@ -20,14 +20,10 @@
       },
     },
   ];
- */
+
 
 const alunosService = new AlunosService()
 
-
-/* alunos.forEach(aluno => {
-    alunosService.add(new AlunoModel(aluno))
-}) */
 
 
 
