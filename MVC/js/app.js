@@ -27,7 +27,10 @@ const alunosService = new AlunosService()
 
 
 
-const alunosView = new AlunosView(document.querySelector('[data-table-alunos]'))
+const alunosView = new AlunosView(
+  document.querySelector('[data-table-alunos]'),
+  new MateriasService().materias
+  )
 
 const alunosController = new AlunosController(alunosService,alunosView)
 

@@ -1,9 +1,9 @@
 class AlunosView {
-    constructor(table){
+    constructor(table, materias){
         this.tableList = table
         this.tableHeader = this.tableList.querySelector("thead")
         this.tableBody = this.tableList.querySelector("tbody")
-        this.materias = ["portugues", "matematica", "historia", "ciencias"]
+        this.materias = materias
 
         this.renderHeader()
     }
