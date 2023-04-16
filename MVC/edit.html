@@ -77,42 +77,12 @@
           <div class="input-field col s12">
               <p>Notas por matéria</p>
           </div>
-          <div class="input-field col s4">
-            <input
-              id="materia"
-              type="text"
-              class="validate"
-            />
           </div>
-          <div class="input-field col s2">
-            <input
-              id="nota_materia_1"
-              type="text"
-              class="validate"
-            />
-          </div>
-          <div class="input-field col s2">
-            <input
-              id="nota_materia_2"
-              type="text"
-              class="validate"
-            />
-          </div>
-          <div class="input-field col s2">
-            <input
-              id="nota_materia_3"
-              type="text"
-              class="validate"
-            />
-          </div>
-          <div class="input-field col s2">
-            <input
-              id="nota_materia_4"
-              type="text"
-              class="validate"
-            />
-          </div>
-         
+          <div data-edit-notas>
+
+        </div> <!-- data-edit-notas -->
+
+        <div class="row">
           <div class="input-field col s12">
             <a href="index.html" class="btn">Cancelar</a>
             <button class="btn" type="submit" name="action">
@@ -120,6 +90,7 @@
               </button>
           </div>
         </div>
+
       </form>
       
     </div>
@@ -129,6 +100,8 @@
     <script src="js/calc.js"></script>
     <script src="js/Models/Aluno_models.js"></script>
     <script src="js/Services/Alunos.service.js"></script>
+
+    <script src="js/Views/EditAluno.view.js"></script>
 
 
     <!-- <script src="js/app.js"></script> -->
@@ -146,6 +119,8 @@
             const aluno = alunosService.searchById(id)
 
             document.getElementById("first_name").value = aluno.nome
+
+            const editAluno = new EditAlunoView()
     </script>
   </body>
 </html>
