@@ -100,8 +100,10 @@
     <script src="js/calc.js"></script>
     <script src="js/Models/Aluno_models.js"></script>
     <script src="js/Services/Alunos.service.js"></script>
+    <script src="js/Services/Materias.service.js"></script>
 
     <script src="js/Views/EditAluno.view.js"></script>
+    <script src="js/Controllers/EditAluno.controller.js"></script>
 
 
     <!-- <script src="js/app.js"></script> -->
@@ -120,7 +122,10 @@
 
             document.getElementById("first_name").value = aluno.nome
 
-            const editAluno = new EditAlunoView()
+            const editAlunoView = new EditAlunoView(document.querySelector("[data-edit-notas]"),
+            new MateriasService().Materias)
+
+            const editAlunoController = new EditAlunoController(aluno, editAlunoView)
     </script>
   </body>
 </html>

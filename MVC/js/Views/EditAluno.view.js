@@ -1,6 +1,7 @@
 class EditAlunoView {
-    constructor(){
-        this.render()
+    constructor(container, materias){
+        //this.render()
+        this.container = container
     }
 
     render(aluno){
@@ -44,6 +45,6 @@ class EditAlunoView {
        </div>
         `
 
-        document.querySelector("[data-edit-notas]").innerHTML = html
+        this.container.innerHTML = html
     }
 }
