@@ -1,35 +1,44 @@
-class AlunosService{
-    constructor(){
+class AlunosService {
+    constructor() {
         this.alunos = []
-        this.updateListAlunosFromLocalStorage()
+        this.updateAlunosFromLocalStorage()
     }
 
-    add(aluno){
-        if(!aluno instanceof AlunoModel){
-            throw TypeError("aluno deve ser uma instancia de AlunoModel")
+    add(aluno) {
+        if (!aluno instanceof AlunoModel) {
+            throw TypeError("aluno must be an instance of AlunoModel")
         }
         this.alunos.push(aluno)
         this.updateLocalStorage()
     }
-    edit(aluno){
-        return aluno
+
+    edit(aluno) {
+        aluno.generateAvarege()
+        this.updateLocalStorage()
     }
 
-    searchById(id){
-        return this.alunos.find( aluno => aluno._id === id)
+    searchById(id) {
+        return this.alunos.find(aluno => aluno._id === id)
     }
-    updateLocalStorage(){
+
+    search(name) {
+        return this.alunos.filter(aluno => aluno.nome.indexOf(name) >= 0)
+    }
+
+    updateLocalStorage() {
         const alunos = JSON.stringify(this.alunos)
         localStorage.setItem("alunos", alunos)
     }
 
-    updateListAlunosFromLocalStorage(){
+    updateAlunosFromLocalStorage() {
         const local = localStorage.getItem("alunos")
-        if(local){
+        if (local) {
             const alunos = JSON.parse(local)
             alunos.forEach(aluno => {
                 this.add(new AlunoModel(aluno))
             })
         }
     }
+
+
 }
