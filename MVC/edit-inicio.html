@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style type="text/css">
+      h1 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .underlined {
+        border-bottom: 3px solid currentColor;
+      }
+
+      .reproved {
+        background-color: red;
+      }
+
+      .aproved {
+        background-color: green;
+      }
+
+      .form-add {
+        background: #e3ecec;
+        padding-top: 0.75em;
+      }
+
+      .main-title {
+        margin-bottom: 0;
+      }
+
+      .input-field p {
+          margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div
+        class="hero center card-panel materialize-red darken-4 white-text z-depth-3"
+      >
+      
+        <h1 class="materialize-red-text text-lighten-3">
+          Curso Javascript Completo
+        </h1>
+      </div>
+      
+      <h2 class="materialize-red-text text-lighten-2 underlined main-title">
+        Detalhe do Aluno
+      </h2>
+
+      <form class="form-add">
+        <div class="row">
+          
+          <div class="input-field col s12">
+            <input
+              placeholder="Digite o nome do aluno"
+              id="first_name"
+              type="text"
+              class="validate"
+            />
+            <label for="first_name" class="active">Nome do Aluno</label>
+          </div>
+          <div class="input-field col s12">
+              <p>Notas por matéria</p>
+          </div>
+          <div class="input-field col s4">
+            <input
+              id="materia"
+              type="text"
+              class="validate"
+            />
+          </div>
+          <div class="input-field col s2">
+            <input
+              id="nota_materia_1"
+              type="text"
+              class="validate"
+            />
+          </div>
+          <div class="input-field col s2">
+            <input
+              id="nota_materia_2"
+              type="text"
+              class="validate"
+            />
+          </div>
+          <div class="input-field col s2">
+            <input
+              id="nota_materia_3"
+              type="text"
+              class="validate"
+            />
+          </div>
+          <div class="input-field col s2">
+            <input
+              id="nota_materia_4"
+              type="text"
+              class="validate"
+            />
+          </div>
+         
+          <div class="input-field col s12">
+            <a class="btn" href="index.html">Cancelar</a>
+            <button class="btn" type="submit" name="action">
+              Cadastrar
+            </button>
+          </div>
+        </div>
+      </form>
+      
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <script src="js/calc.js"></script>
+    <script src="js/Models/Aluno.model.js"></script>
+    <script src="js/Services/Alunos.service.js"></script>
+
+
+    <!-- <script src="js/app.js"></script> -->
+
+    <script>
+        
+        const alunosService = new AlunosService()
+
+        const paramsString = window.location.search
+        const URLparams= new URLSearchParams(paramsString)
+        const id = parseInt(URLparams.get("id"))        
+
+        const aluno = alunosService.searchById(id)
+
+        document.getElementById("first_name").value = aluno.nome
+    </script>
+  </body>
+</html>
